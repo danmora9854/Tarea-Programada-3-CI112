@@ -2,7 +2,7 @@ import java.util.ArrayList;
 /**
  * 
  *
- * @author (Juan Jose Bermúdez carné Daniel Mora Mora B64720 Diego Hernández carné)
+ * @author (Juan Jose Bermúdez B71082, Daniel Mora Mora B64720, Diego Hernández carné)
  * @version (5-07-2021)
  */
 public class Serie
