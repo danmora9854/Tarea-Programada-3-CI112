@@ -7,4 +7,11 @@ public class Categoria
     String categ_name;
     ArrayList <ID> ids;
     Categoria next;
+    
+    public Categoria (String categ_name)
+    {
+        this.categ_name = categ_name;
+        ids = new ArrayList <ID> ();
+        next = null;
+    }
 }
