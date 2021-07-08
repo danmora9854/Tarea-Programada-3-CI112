@@ -37,17 +37,17 @@ public class Titulo
      * Método que busca si existe cierto titulo en el arbol.
      * De ser así devuelve el objeto arbol. De lo contrario devuelve null.
      */
-    public Titulo existe(String titulo){
+    public Titulo busque(String titulo){
         Titulo r = null;  
         if (titulo.compareTo(title_name) == 0) 
             r=this;
         else{
             if (titulo.compareTo(title_name) < 0){ 
                 if (title_der!=null)
-                    return title_der. existe(titulo);
+                    return title_der.busque(titulo);
             }else{
                 if (title_izq!=null)
-                    return title_izq. existe(titulo);
+                    return title_izq.busque(titulo);
             }
         }
         return r;
