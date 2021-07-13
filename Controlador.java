@@ -5,8 +5,11 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.util.*;
+import javax.swing.*;
 public class Controlador
 {
     ID id_list;
@@ -25,6 +28,67 @@ public class Controlador
     }
     
     /**
+     * DEBERIAMOS IMPLEMENTAR TODAS LAS LISTAS TAL QUE
+     * TENGAMOS ALGO QUE APUNTE A SU FINAL
+     */
+    
+    /**
+     * Método que guarda la data de todas las peliculas.
+     */
+    public void ingreseData (String [] fila, boolean flag)
+    {
+        char c1 = 34;
+        char c2 = 0;
+        String [] data = fila.clone();
+        String [] actores;
+        String [] categs;
+        for (int i = 0; i < 12; i++)
+        {
+            data[i] = data[i].replace(c1,c2).trim();
+        }
+        actores = data[4].split(",");
+        for (int j = 0; j < actores.length; j++)
+        {
+            actores[j] = actores[j].trim();
+        }
+        categs = data[10].split(",|&");
+        for (int k = 0; k < categs.length; k++)
+        {
+            categs[k] = categs[k].trim();
+        }
+        
+        if (flag)
+        {
+            id_list = new ID (data[0],data[1],data[3],data[6],data[7],data[8],data[9],data[11]);
+            categ_list = new Categoria (categs[0],id_list);
+            country_list = new Pais (data[5],id_list);
+            title_tree = new Titulo (data[2],id_list);
+            cast_tree = new Cast (actores[0]);
+            cast_tree.ids.add(id_list);
+            
+            id_list.categ.add(categ_list);
+            id_list.cast.add(cast_tree);
+            id_list.title = title_tree;
+            id_list.country = country_list;
+            
+            for (int n = 1; n < actores.length(); n++)
+            {
+                cast_tree.add(actores[n],id_list);
+                //Aca debe ademas linkear el nuevo objeto cast al id_list
+            }
+            for (int p = 1; p < categs.length(); p++)
+            {
+                categ_list.add(categs[p],id_list);
+                //Aca debe ademas linkear el nuevo objeto categoria al id_list
+            }
+        } else {
+            //Hace algo similar al if anterior solo que los objetos ya
+            //han sido creados entonces solo usa metodos add
+        }
+        
+    }
+    
+    /**
      * Método que lee la data de todas las películas.
      */
     public void leaData ()
@@ -32,28 +96,20 @@ public class Controlador
         //Habria que implementar un metodo que le vaya dando al ciclo
         //siguiente la info separada de cada pelicula.
         
-        //Inicio de un ciclo que se repite por cada pelicula
+        String hilera;
+        String d[];
+        boolean flag = true;
         
-            //1era iteracion inicializa variables
-            id_list = new ID (id,tipo,director,fecha,año,audiencia,duracion,descripcion);
-            categ_list = new Categoria (categoria,id_list);
-            country_list = new Pais (pais,id_list);
-            title_tree = new Titulo (titulo,id_list);
-            cast_tree = new Cast (actor_1,id_list);
-            //Inicio de un ciclo que se repite por cada miembro del cast exceptuando el primero
-                cast_tree.add(actor_i,id_list);
-            //Fin de ciclo
-            
-            //Demás iteraciones que no sean la 1era, solo añaden
-            id_list.add(id,tipo,director,fecha,año,audiencia,duracion,descripcion);
-            categ_list.add(categoria,id_list);
-            country_list.add(pais,id_list);
-            title_tree.add(titulo,id_list);
-            //Inicio de un ciclo que se repite por cada miembro del cast
-                cast_tree.add(actor_i,id_list);
-            //Fin de ciclo
-            
-        //Fin de ciclo
+        try{
+            Scanner sc = new Scanner (new FileReader("netflix_titles.txt"));
+            while((sc.hasNextLine())){
+                hilera = sc.nextLine();
+                d = hilera.split(";");
+                ingreseData(d,flag);
+                flag = false;
+            }
+        }
+        catch (Exception e) {}
         
     }
     
