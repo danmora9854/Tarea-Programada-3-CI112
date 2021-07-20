@@ -17,6 +17,29 @@ public class Cast
         actor_der = null;
     }
     
+    public String muestreActor(){
+
+        return actor + "Participó en las siguientes películas:\n" + ids;
+
+    }
+
+    public Cast busque(String act)
+    {
+        Cast c = null;  
+        if (act.compareTo(actor) == 0) 
+            c=this;
+        else{
+            if (act.compareTo(actor) < 0){ 
+                if (actor_der!=null)
+                    return actor_der.busque(act);
+            }else{
+                if (actor_izq!=null)
+                    return actor_izq.busque(act);
+            }
+        }
+        return c;
+    }
+    
     public void add (String nombre, ID id_num) {
         if (nombre.compareTo(actor) < 0){                            
             if (actor_der == null){
@@ -38,25 +61,5 @@ public class Cast
                 }
             }
         }
-    }
-    
-    /**
-     * Método que busca si existe cierto actor en el arbol.
-     * De ser así devuelve el objeto Cast. De lo contrario devuelve null.
-     */
-    public Cast busque(String nombre){
-        Cast r = null;  
-        if (nombre.compareTo(actor) == 0) 
-            r=this;
-        else{
-            if (nombre.compareTo(actor) < 0){ 
-                if (actor_der!=null)
-                    return actor_der.busque(nombre);
-            }else{
-                if (actor_izq!=null)
-                    return actor_izq.busque(nombre);
-            }
-        }
-        return r;
     }
 }
