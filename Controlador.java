@@ -1,6 +1,5 @@
-
 /**
- * Write a description of class Controlador here.
+ * Clase controlador de la Tarea Programada 3.
  *
  * @author (your name)
  * @version (a version number or a date)
@@ -28,11 +27,6 @@ public class Controlador
     }
     
     /**
-     * DEBERIAMOS IMPLEMENTAR TODAS LAS LISTAS TAL QUE
-     * TENGAMOS ALGO QUE APUNTE A SU FINAL
-     */
-    
-    /**
      * Método que guarda la data de todas las peliculas.
      */
     public void ingreseData (String [] fila, boolean flag)
@@ -57,33 +51,43 @@ public class Controlador
             categs[k] = categs[k].trim();
         }
         
+        //Flag = true si es la primera pelicula de todo el dataset
         if (flag)
         {
             id_list = new ID (data[0],data[1],data[3],data[6],data[7],data[8],data[9],data[11]);
             categ_list = new Categoria (categs[0],id_list);
             country_list = new Pais (data[5],id_list);
             title_tree = new Titulo (data[2],id_list);
-            cast_tree = new Cast (actores[0]);
-            cast_tree.ids.add(id_list);
+            cast_tree = new Cast (actores[0],id_list);
             
             id_list.categ.add(categ_list);
             id_list.cast.add(cast_tree);
             id_list.title = title_tree;
             id_list.country = country_list;
             
-            for (int n = 1; n < actores.length(); n++)
+            for (int n = 1; n < actores.length; n++)
             {
                 cast_tree.add(actores[n],id_list);
-                //Aca debe ademas linkear el nuevo objeto cast al id_list
             }
-            for (int p = 1; p < categs.length(); p++)
+            for (int p = 1; p < categs.length; p++)
             {
                 categ_list.add(categs[p],id_list);
-                //Aca debe ademas linkear el nuevo objeto categoria al id_list
             }
         } else {
             //Hace algo similar al if anterior solo que los objetos ya
             //han sido creados entonces solo usa metodos add
+            ID new_id = new ID (data[0],data[1],data[3],data[6],data[7],data[8],data[9],data[11]);
+            id_list.add(new_id);
+            country_list.add(data[5],new_id);
+            title_tree.add(data[2],new_id);
+            
+            for (int n = 0; n < actores.length; n++){
+                cast_tree.add(actores[n],new_id);
+            }
+            for (int p = 0; p < categs.length; p++)
+            {
+                categ_list.add(categs[p],new_id);
+            }
         }
         
     }
@@ -93,9 +97,6 @@ public class Controlador
      */
     public void leaData ()
     {
-        //Habria que implementar un metodo que le vaya dando al ciclo
-        //siguiente la info separada de cada pelicula.
-        
         String hilera;
         String d[];
         boolean flag = true;
@@ -110,7 +111,6 @@ public class Controlador
             }
         }
         catch (Exception e) {}
-        
     }
     
     /**
