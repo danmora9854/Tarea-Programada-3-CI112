@@ -1,8 +1,8 @@
-import java.util.ArrayList;
 /**
  * Lista simple con todos los ids de las peliculas ingresadas.
  * Sirve de central hub para linkear toda la información de una película según cómo se busque esta.
  */
+import java.util.ArrayList;
 public class ID
 {
     String value;
@@ -27,5 +27,14 @@ public class ID
         cast = new ArrayList <Cast> ();
         title = null;
         country = null;
+    }
+    
+    public void add (ID newID)
+    {
+        if (next == null){
+            next = newID;
+        }else{
+            next.add(newID);
+        }
     }
 }
