@@ -17,6 +17,7 @@ public class Categoria
         ids.add(id);
         next = null;
     }
+    
     /**
      * add: Método que añade una categoría a la lista
      * 
@@ -36,6 +37,7 @@ public class Categoria
             next.add(categ,id_num); //cualquier otro caso
         }
     }
+    
     /**
      * existe: Método que devuelve un boolean indicando si existe o no una categoría en la lista, por nombre
      * 
@@ -51,6 +53,7 @@ public class Categoria
         }
         return flag;
     }
+    
     /**
      * buscarCategoria: Método que busca una categoría por nombre, y devuelve su arreglo de objetos tipo ID.
      * 

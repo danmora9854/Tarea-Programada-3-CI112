@@ -76,10 +76,12 @@ public class Controlador
             {
                 cast_tree.add(actores[n],id_list);
             }
+            
             for (int p = 1; p < categs.length; p++)
             {
                 categ_list.add(categs[p],id_list);
             }
+            
         } else {
             //Hace algo similar al if anterior solo que los objetos ya
             //han sido creados entonces solo usa metodos add
@@ -91,6 +93,7 @@ public class Controlador
             for (int n = 0; n < actores.length; n++){
                 cast_tree.add(actores[n],new_id);
             }
+            
             for (int p = 0; p < categs.length; p++)
             {
                 categ_list.add(categs[p],new_id);

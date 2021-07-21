@@ -16,6 +16,15 @@ public class ID
     /**
      * Constructor del objeto tipo ID. Recibe todos los Strings y le asigna sus valores a cada respectivo atributo.
      * 
+     * @param value: Recibe un string con el valor del código de la película/serie
+     * @param tipo: Recibe un string con el tipo del producto que es película/serie
+     * @param director: Recibe un string con el dierector del de la película/serie
+     * @param fecha: Recibe un string con la fecha de rodaje de la película/serie
+     * @param año: Recibe un string con el año lanzamiento de la película/serie
+     * @param audiencia: Recibe un string con la audencia de la película/serie
+     * @param duracion: Recibe un string con la duración de la película/serie
+     * @param descripcion: Recibe un string con la descripcion de la película/serie
+     * 
      */
     public ID (String value, String tipo, String director, String fecha, String año, String audiencia, String duracion, String descripcion)
     {
@@ -32,8 +41,10 @@ public class ID
         title = null;
         country = null;
     }
+    
      /**
      * add: Método que añade un ID a la lista
+     * 
      * @param newID: Recibe un objeto tipo ID que es el nuevo nodo de la lista de IDs
      */
     public void add (ID newID)
