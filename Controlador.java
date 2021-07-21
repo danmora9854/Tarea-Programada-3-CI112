@@ -1,22 +1,26 @@
 /**
  * Clase controlador de la Tarea Programada 3.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Diego Hernández Agüero B83716)
+ * @version (v.1)
  */
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
+
 public class Controlador
 {
-    ID id_list;
-    Categoria categ_list;
-    Pais country_list;
-    Titulo title_tree;
-    Cast cast_tree;
-
+    ID id_list; //id_list: almacena los id de las peliculas
+    Categoria categ_list; //categ_list: almacena las categorias de las peliculas
+    Pais country_list; //country_list: almacena el país de las peliculas
+    Titulo title_tree; //title_tree: almacena los títulos de las peliculas
+    Cast cast_tree; //cast_tree: almacena los cast de las peliculas
+    
+    /**
+     * Controlador Es el constructor de la clase
+     */
     public Controlador ()
     {
         id_list = null;
@@ -28,6 +32,9 @@ public class Controlador
 
     /**
      * Método que guarda la data de todas las peliculas.
+     * 
+     * @param fila: Recibe un Array con los datos de la pelicula separados por celdas
+     * @param flag: Recibe un boolean para determinar si es la primera pelicula que recibe
      */
     public void ingreseData (String [] fila, boolean flag)
     {
@@ -94,6 +101,7 @@ public class Controlador
 
     /**
      * Método que lee la data de todas las películas.
+     * 
      */
     public void leaData ()
     {
@@ -116,6 +124,8 @@ public class Controlador
     /**
      * Método que devuelve en una string la información de la película
      * asociada con el id dado de parámetro.
+     * 
+     * @param id: Recibe un ID para buscar la película
      */
     public String muestrePelicula (ID id)
     {
@@ -189,6 +199,8 @@ public class Controlador
                 categ_list.add(name,listaDeID.get(i));
             }
         }
+        
+        System.out.println("La categoría ha sido creada con éxito");
     }
 
     public static void main (String arg[])
@@ -196,26 +208,64 @@ public class Controlador
         Controlador c = new Controlador ();
         c.leaData();
         boolean continua = true;
+        Scanner scan = new Scanner("");
+        ArrayList<ID> busqueda = new ArrayList<ID>();
         do {
             //Elige qué acción realizar con el programa
             String[] ops1 = {"Buscar por titulo","Buscar por actor","Buscar por categoria","Buscar por pais","Crear nueva categoria"};
-            String ans1 = (String)(JOptionPane.showInputDialog(null,"Qué desea hacer?","Por favor escoja una opción",JOptionPane.QUESTION_MESSAGE, null, ops1, ops1[0]));
+            String ans1 = (String)(JOptionPane.showInputDialog(null,"¿Qué desea hacer?","Por favor escoja una opción",JOptionPane.QUESTION_MESSAGE, null, ops1, ops1[0]));
             switch (ans1)
             {
                 case "Buscar por titulo":
-
+                
+                System.out.println("Ingrese el título de la película que desea buscar");
+                scan = new Scanner(System.in);
+                String tituloDeBusqueda = scan.nextLine();
+                ID peliBuscada = c.busqueTitulo(tituloDeBusqueda);
+                
+                c.muestrePelicula(peliBuscada);
+                
                 break;
-                case "Buscar por actor": 
-
+                
+                case "Buscar por actor":
+                
+                System.out.println("Ingrese el nombre del actor que desea buscar");
+                scan = new Scanner(System.in);
+                String nombreDeActor = scan.nextLine();
+                busqueda = c.busqueCast(nombreDeActor);
+                
+                for(int i = 0; i < busqueda.size();i++){
+                    c.muestrePelicula(busqueda.get(i));
+                }
+                
                 break;
+                
                 case "Buscar por categoria":
+                System.out.println("Ingrese el nombre de la categoría que desea buscar");
+                scan = new Scanner(System.in);
+                String nombreDeCateg = scan.nextLine();
+                busqueda = c.busqueCategoria(nombreDeCateg);
+                
+                 for(int i = 0; i < busqueda.size();i++){
+                    c.muestrePelicula(busqueda.get(i));
+                }
 
                 break;
+                
                 case "Buscar por pais":
+                System.out.println("Ingrese el nombre del país que desea buscar");
+                scan = new Scanner(System.in);
+                String nombreDePais = scan.nextLine();
+                busqueda = c.busquePais(nombreDePais);
+                
+                 for(int i = 0; i < busqueda.size();i++){
+                    c.muestrePelicula(busqueda.get(i));
+                }
 
                 break;
+                
                 case "Crear nueva categoria":
-                c.crearCategoria();//Falta implementar
+                c.crearCategoria();
                 break;
             }
             //Elige si continuar utilizando el programa o no
