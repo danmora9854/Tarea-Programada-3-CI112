@@ -17,7 +17,7 @@ public class Controlador
     Pais country_list; //country_list: almacena el país de las peliculas
     Titulo title_tree; //title_tree: almacena los títulos de las peliculas
     Cast cast_tree; //cast_tree: almacena los cast de las peliculas
-    
+
     /**
      * Controlador: Es el constructor de la clase
      */
@@ -129,7 +129,18 @@ public class Controlador
      */
     public void muestrePelicula (ID id)
     {
-        System.out.println(id.value + " // " + id.tipo + " // " + id.title.title_name + " // " + id.director + " // " + id.cast + " // " + id.country.pais_name +" // " + id.fecha + " // " + id.año + " // " + id.audiencia + " // " + id.duracion + " // " + id.descripcion);
+        System.out.print(id.value + " // " + id.tipo + " // " + id.title.title_name + " // " + id.director + " // ");
+        for(int i = 0; i < id.cast.size();i++) {
+            System.out.print(id.cast.get(i).actor + ",");
+        }
+        
+        System.out.print(" // " + id.country.pais_name +" // " + id.fecha + " // " + id.año + " // " + id.audiencia + " // " + id.duracion + " // ");
+        
+        for(int i = 0; i < id.categ.size();i++) {
+            System.out.print(id.categ.get(i).categ_name + ",");
+        }
+        
+        System.out.print(" // "+ id.descripcion);
     }
 
     /**
@@ -181,7 +192,7 @@ public class Controlador
         }
         return ids;
     }
-    
+
     /**
      * busquePais: Método que devuelve un ArrayList de ID's asociado a un pais
      * asociada con el string dado de parámetro.
@@ -219,12 +230,12 @@ public class Controlador
         } while(iterador != null);
 
         if(listaDeID.size() != 0){
-            
+
             for(int i = 0; i < listaDeID.size();i++){
                 categ_list.add(name,listaDeID.get(i));
             }
         }
-        
+
         System.out.println("La categoría ha sido creada con éxito");
     }
 
@@ -242,53 +253,53 @@ public class Controlador
             switch (ans1)
             {
                 case "Buscar por titulo":
-                
+
                 System.out.println("Ingrese el título de la película que desea buscar");
                 scan = new Scanner(System.in);
                 String tituloDeBusqueda = scan.nextLine();
                 ID peliBuscada = c.busqueTitulo(tituloDeBusqueda);
-                
+
                 c.muestrePelicula(peliBuscada);
-                
+
                 break;
-                
+
                 case "Buscar por actor":
-                
+
                 System.out.println("Ingrese el nombre del actor que desea buscar");
                 scan = new Scanner(System.in);
                 String nombreDeActor = scan.nextLine();
                 busqueda = c.busqueCast(nombreDeActor);
-                
+
                 for(int i = 0; i < busqueda.size();i++){
                     c.muestrePelicula(busqueda.get(i));
                 }
-                
+
                 break;
-                
+
                 case "Buscar por categoria":
                 System.out.println("Ingrese el nombre de la categoría que desea buscar");
                 scan = new Scanner(System.in);
                 String nombreDeCateg = scan.nextLine();
                 busqueda = c.busqueCategoria(nombreDeCateg);
-                
-                 for(int i = 0; i < busqueda.size();i++){
+
+                for(int i = 0; i < busqueda.size();i++){
                     c.muestrePelicula(busqueda.get(i));
                 }
 
                 break;
-                
+
                 case "Buscar por pais":
                 System.out.println("Ingrese el nombre del país que desea buscar");
                 scan = new Scanner(System.in);
                 String nombreDePais = scan.nextLine();
                 busqueda = c.busquePais(nombreDePais);
-                
-                 for(int i = 0; i < busqueda.size();i++){
+
+                for(int i = 0; i < busqueda.size();i++){
                     c.muestrePelicula(busqueda.get(i));
                 }
 
                 break;
-                
+
                 case "Crear nueva categoria":
                 c.crearCategoria();
                 break;
