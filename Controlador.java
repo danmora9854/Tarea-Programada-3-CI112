@@ -52,7 +52,7 @@ public class Controlador
         {
             actores[j] = actores[j].trim();
         }
-        categs = data[10].split(",|&");
+        categs = data[10].split(",");
         for (int k = 0; k < categs.length; k++)
         {
             categs[k] = categs[k].trim();
