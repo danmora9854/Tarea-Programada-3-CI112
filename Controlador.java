@@ -19,7 +19,7 @@ public class Controlador
     Cast cast_tree; //cast_tree: almacena los cast de las peliculas
     
     /**
-     * Controlador Es el constructor de la clase
+     * Controlador: Es el constructor de la clase
      */
     public Controlador ()
     {
@@ -31,7 +31,7 @@ public class Controlador
     }
 
     /**
-     * Método que guarda la data de todas las peliculas.
+     * ingreseData: Método que guarda la data de todas las peliculas.
      * 
      * @param fila: Recibe un Array con los datos de la pelicula separados por celdas
      * @param flag: Recibe un boolean para determinar si es la primera pelicula que recibe
@@ -100,7 +100,7 @@ public class Controlador
     }
 
     /**
-     * Método que lee la data de todas las películas.
+     * leaData: Método que lee la data de todas las películas.
      * 
      */
     public void leaData ()
@@ -122,19 +122,22 @@ public class Controlador
     }
 
     /**
-     * Método que devuelve en una string la información de la película
+     * muestrePelicula: Método que devuelve en una string la información de la película
      * asociada con el id dado de parámetro.
      * 
      * @param id: Recibe un ID para buscar la película
      */
-    public String muestrePelicula (ID id)
+    public void muestrePelicula (ID id)
     {
-        String msg = "";
-        msg += id.value + " // " + id.tipo + " // " + id.title.title_name + " // " + id.director + " // " + id.cast + " // " + id.country.pais_name;
-        msg += " // " + id.fecha + " // " + id.año + " // " + id.audiencia + " // " + id.duracion + " // " + id.descripcion;
-        return msg;
+        System.out.println(id.value + " // " + id.tipo + " // " + id.title.title_name + " // " + id.director + " // " + id.cast + " // " + id.country.pais_name +" // " + id.fecha + " // " + id.año + " // " + id.audiencia + " // " + id.duracion + " // " + id.descripcion);
     }
 
+    /**
+     * busqueTitulo: Método que devuelve un ID asociado a una película
+     * asociada con el string dado de parámetro.
+     * 
+     * @param title: Recibe un String para buscar la película
+     */
     public ID busqueTitulo (String title)
     {
         ID id = null;
@@ -146,6 +149,12 @@ public class Controlador
         return id;
     }
 
+    /**
+     * busqueCast: Método que devuelve un ArrayList de ID's asociado a un actor
+     * asociado con el string dado de parámetro.
+     * 
+     * @param actor: Recibe un String para buscar el actor
+     */
     public ArrayList <ID> busqueCast (String actor)
     {
         ArrayList <ID> ids = null;
@@ -157,6 +166,12 @@ public class Controlador
         return ids;
     }
 
+    /**
+     * busqueCategoria: Método que devuelve un ArrayList de ID's asociado a una categoria
+     * asociada con el string dado de parámetro.
+     * 
+     * @param categoria: Recibe un String para buscar la categoria
+     */
     public ArrayList <ID> busqueCategoria (String categoria)
     {
         ArrayList <ID> ids = null;
@@ -166,7 +181,13 @@ public class Controlador
         }
         return ids;
     }
-
+    
+    /**
+     * busquePais: Método que devuelve un ArrayList de ID's asociado a un pais
+     * asociada con el string dado de parámetro.
+     * 
+     * @param pais: Recibe un String para buscar el pais
+     */
     public ArrayList <ID> busquePais (String pais)
     {
         ArrayList <ID> ids = null;
@@ -178,6 +199,10 @@ public class Controlador
         return ids;
     }
 
+    /**
+     * crearCategoria: Método que crea una Categoría con un nuevo nombre dado por el usuario
+     * 
+     */
     public void crearCategoria()
     {
         System.out.println("Ingrese el nombre de la nueva categoría:");
