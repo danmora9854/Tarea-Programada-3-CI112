@@ -34,7 +34,7 @@ public class Pais
         if(pais_name==n){
             flag=true;
         }else{
-            if(next!=null){next.existe(n);}
+            if(next!=null){flag=next.existe(n);}
         }
         return flag;
     }
