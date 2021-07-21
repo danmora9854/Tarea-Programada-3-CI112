@@ -7,7 +7,9 @@ public class Categoria
     String categ_name;
     ArrayList <ID> ids;
     Categoria next;
-    
+    /**
+     * Constructor del objeto categoria, le asigna a la categoria un nombre y un id.
+     */
     public Categoria (String categ_name, ID id)
     {
         this.categ_name = categ_name;
@@ -15,6 +17,12 @@ public class Categoria
         ids.add(id);
         next = null;
     }
+    /**
+     * add: Método que añade una categoría a la lista
+     * 
+     * @param categ: Recibe un string que es el nombre de la nueva categoría. 
+     * @param id_num: Recibe un objeto tipo ID para asignarle a la categoría.
+     */
     
     public void add (String categ, ID id_num) {
         if (categ.equals(categ_name)) {
@@ -28,7 +36,12 @@ public class Categoria
             next.add(categ,id_num); //cualquier otro caso
         }
     }
-    
+    /**
+     * existe: Método que devuelve un boolean indicando si existe o no una categoría en la lista, por nombre
+     * 
+     * @param n: Recibe un string que es el nombre de la categoría por buscar en la lista.
+     
+     */
      public boolean existe(String n){
         boolean flag=false;
         if(categ_name==n){
@@ -38,7 +51,11 @@ public class Categoria
         }
         return flag;
     }
-    
+    /**
+     * buscarCategoria: Método que busca una categoría por nombre, y devuelve su arreglo de objetos tipo ID.
+     * 
+     * @param n: Recibe un string que es la cateogíra por buscar.
+     */
     public ArrayList<ID> buscarCategoria(String n){
         if(existe(n)){
             if(categ_name==n){
