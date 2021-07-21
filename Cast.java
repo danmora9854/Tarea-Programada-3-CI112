@@ -4,10 +4,14 @@
 import java.util.ArrayList;
 public class Cast
 {
-    String actor;
-    ArrayList <ID> ids;
-    Cast actor_izq, actor_der;//ordenadas segun el metodo de comparacion de strings compareTo() para hacer un arbol binario de busqueda
-    
+    String actor; //Nombre del actor asociado al nodo Cast
+    ArrayList <ID> ids; //Arreglo de objetos tipo ID asociados a cada actor
+    Cast actor_izq, actor_der;//Ramas del arbol,ordenadas segun el metodo de comparacion de strings compareTo() para hacer un arbol binario de busqueda
+     /**
+     * Constructor de la clase Cast
+     * @param actor: Recibe un string que es el nombre del actor.
+     * @param id: Recibe un objeto tipo ID para asignarle a cada cast.
+     */
     public Cast (String actor, ID id)
     {
         this.actor = actor;
@@ -16,13 +20,18 @@ public class Cast
         actor_izq = null;
         actor_der = null;
     }
-    
+      /**
+     * muestreActor: Devuelve un String con las peliculas en las que participo el actor asociado al nodo.
+     */
     public String muestreActor(){
 
         return actor + "Participó en las siguientes películas:\n" + ids;
 
     }
-
+      /**
+     * busque: Devuelve un objeto tipo Cast al buscar un actor por su nombre.
+     * @param act: Recibe un string que es el nombre del actor por buscar.
+     */
     public Cast busque(String act)
     {
         Cast c = null;  
@@ -39,7 +48,11 @@ public class Cast
         }
         return c;
     }
-    
+      /**
+     * add: Añade un nodo al arbol de Cast, ordenado por orden alfabetico.
+     * @param nombre: Recibe un string que es el nombre del actor por añadir.
+     * @param id_num: Recibe un objeto tipo ID para asignarle a cada actor por añadir.
+     */
     public void add (String nombre, ID id_num) {
         if (nombre.compareTo(actor) < 0){                            
             if (actor_der == null){
