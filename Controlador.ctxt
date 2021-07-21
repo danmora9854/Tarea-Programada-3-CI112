@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=Controlador
+comment1.params=
+comment1.target=Controlador()
+comment10.params=arg
+comment10.target=void\ main(java.lang.String[])
+comment2.params=fila\ flag
+comment2.target=void\ ingreseData(java.lang.String[],\ boolean)
+comment2.text=\r\n\ M\u00E9todo\ que\ guarda\ la\ data\ de\ todas\ las\ peliculas.\r\n
+comment3.params=
+comment3.target=void\ leaData()
+comment3.text=\r\n\ M\u00E9todo\ que\ lee\ la\ data\ de\ todas\ las\ pel\u00EDculas.\r\n
+comment4.params=id
+comment4.target=java.lang.String\ muestrePelicula(ID)
+comment4.text=\r\n\ M\u00E9todo\ que\ devuelve\ en\ una\ string\ la\ informaci\u00F3n\ de\ la\ pel\u00EDcula\r\n\ asociada\ con\ el\ id\ dado\ de\ par\u00E1metro.\r\n
+comment5.params=title
+comment5.target=ID\ busqueTitulo(java.lang.String)
+comment6.params=actor
+comment6.target=java.util.ArrayList\ busqueCast(java.lang.String)
+comment7.params=categoria
+comment7.target=java.util.ArrayList\ busqueCategoria(java.lang.String)
+comment8.params=pais
+comment8.target=java.util.ArrayList\ busquePais(java.lang.String)
+comment9.params=
+comment9.target=void\ crearCategoria()
+numComments=11

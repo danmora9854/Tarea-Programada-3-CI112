@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Cast
+comment1.params=actor\ id
+comment1.target=Cast(java.lang.String,\ ID)
+comment2.params=
+comment2.target=java.lang.String\ muestreActor()
+comment3.params=act
+comment3.target=Cast\ busque(java.lang.String)
+comment4.params=nombre\ id_num
+comment4.target=void\ add(java.lang.String,\ ID)
+numComments=5

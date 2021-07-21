@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Titulo
+comment1.params=title_name\ show_id
+comment1.target=Titulo(java.lang.String,\ ID)
+comment2.params=titulo\ id_num
+comment2.target=void\ add(java.lang.String,\ ID)
+comment3.params=titulo
+comment3.target=Titulo\ busque(java.lang.String)
+comment3.text=\r\n\ M\u00E9todo\ que\ busca\ si\ existe\ cierto\ titulo\ en\ el\ arbol.\r\n\ De\ ser\ as\u00ED\ devuelve\ el\ objeto\ Titulo.\ De\ lo\ contrario\ devuelve\ null.\r\n
+numComments=4

@@ -16,7 +16,7 @@ public class Controlador
     Pais country_list;
     Titulo title_tree;
     Cast cast_tree;
-    
+
     public Controlador ()
     {
         id_list = null;
@@ -25,7 +25,7 @@ public class Controlador
         title_tree = null;
         cast_tree = null;
     }
-    
+
     /**
      * Método que guarda la data de todas las peliculas.
      */
@@ -50,7 +50,7 @@ public class Controlador
         {
             categs[k] = categs[k].trim();
         }
-        
+
         //Flag = true si es la primera pelicula de todo el dataset
         if (flag)
         {
@@ -59,12 +59,12 @@ public class Controlador
             country_list = new Pais (data[5],id_list);
             title_tree = new Titulo (data[2],id_list);
             cast_tree = new Cast (actores[0],id_list);
-            
+
             id_list.categ.add(categ_list);
             id_list.cast.add(cast_tree);
             id_list.title = title_tree;
             id_list.country = country_list;
-            
+
             for (int n = 1; n < actores.length; n++)
             {
                 cast_tree.add(actores[n],id_list);
@@ -80,7 +80,7 @@ public class Controlador
             id_list.add(new_id);
             country_list.add(data[5],new_id);
             title_tree.add(data[2],new_id);
-            
+
             for (int n = 0; n < actores.length; n++){
                 cast_tree.add(actores[n],new_id);
             }
@@ -89,9 +89,9 @@ public class Controlador
                 categ_list.add(categs[p],new_id);
             }
         }
-        
+
     }
-    
+
     /**
      * Método que lee la data de todas las películas.
      */
@@ -100,7 +100,7 @@ public class Controlador
         String hilera;
         String d[];
         boolean flag = true;
-        
+
         try{
             Scanner sc = new Scanner (new FileReader("netflix_titles.txt"));
             while((sc.hasNextLine())){
@@ -112,7 +112,7 @@ public class Controlador
         }
         catch (Exception e) {}
     }
-    
+
     /**
      * Método que devuelve en una string la información de la película
      * asociada con el id dado de parámetro.
@@ -124,7 +124,7 @@ public class Controlador
         msg += " // " + id.fecha + " // " + id.año + " // " + id.audiencia + " // " + id.duracion + " // " + id.descripcion;
         return msg;
     }
-    
+
     public ID busqueTitulo (String title)
     {
         ID id = null;
@@ -135,7 +135,7 @@ public class Controlador
         }
         return id;
     }
-    
+
     public ArrayList <ID> busqueCast (String actor)
     {
         ArrayList <ID> ids = null;
@@ -146,7 +146,7 @@ public class Controlador
         }
         return ids;
     }
-    
+
     public ArrayList <ID> busqueCategoria (String categoria)
     {
         ArrayList <ID> ids = null;
@@ -156,7 +156,7 @@ public class Controlador
         }
         return ids;
     }
-    
+
     public ArrayList <ID> busquePais (String pais)
     {
         ArrayList <ID> ids = null;
@@ -164,41 +164,64 @@ public class Controlador
         {
             ids = country_list.buscarPais(pais);
         }
-        
+
         return ids;
     }
-    
+
+    public void crearCategoria()
+    {
+        System.out.println("Ingrese el nombre de la nueva categoría:");
+        Scanner scan = new Scanner(System.in);
+        String name = scan.nextLine();
+        Categoria iterador = categ_list;
+        ArrayList<ID> listaDeID= new ArrayList<ID>();
+
+        do {
+            if (iterador.categ_name.contains(name)){
+                listaDeID.addAll(iterador.ids);
+            }
+            iterador = iterador.next;
+        } while(iterador != null);
+
+        if(listaDeID.size() != 0){
+            
+            for(int i = 0; i < listaDeID.size();i++){
+                categ_list.add(name,listaDeID.get(i));
+            }
+        }
+    }
+
     public static void main (String arg[])
     {
         Controlador c = new Controlador ();
         c.leaData();
         boolean continua = true;
         do {
-          //Elige qué acción realizar con el programa
-          String[] ops1 = {"Buscar por titulo","Buscar por actor","Buscar por categoria","Buscar por pais","Crear nueva categoria"};
-          String ans1 = (String)(JOptionPane.showInputDialog(null,"Qué desea hacer?","Por favor escoja una opción",JOptionPane.QUESTION_MESSAGE, null, ops1, ops1[0]));
-          switch (ans1)
-          {
-            case "Buscar por titulo":
-                
+            //Elige qué acción realizar con el programa
+            String[] ops1 = {"Buscar por titulo","Buscar por actor","Buscar por categoria","Buscar por pais","Crear nueva categoria"};
+            String ans1 = (String)(JOptionPane.showInputDialog(null,"Qué desea hacer?","Por favor escoja una opción",JOptionPane.QUESTION_MESSAGE, null, ops1, ops1[0]));
+            switch (ans1)
+            {
+                case "Buscar por titulo":
+
                 break;
-            case "Buscar por actor": 
-              
+                case "Buscar por actor": 
+
                 break;
-            case "Buscar por categoria":
-              
+                case "Buscar por categoria":
+
                 break;
-            case "Buscar por pais":
-              
+                case "Buscar por pais":
+
                 break;
-            case "Crear nueva categoria":
+                case "Crear nueva categoria":
                 c.crearCategoria();//Falta implementar
                 break;
-          }
-          //Elige si continuar utilizando el programa o no
-          String[] ops2 = {"Realizar nueva acción","Cerrar programa"};
-          String ans2 = (String)(JOptionPane.showInputDialog(null,"Qué desea hacer?","Por favor escoja una opción",JOptionPane.QUESTION_MESSAGE, null, ops2, ops2[0]));
-          continua = (ans2.equals("Cerrar programa"))?false:true;
+            }
+            //Elige si continuar utilizando el programa o no
+            String[] ops2 = {"Realizar nueva acción","Cerrar programa"};
+            String ans2 = (String)(JOptionPane.showInputDialog(null,"Qué desea hacer?","Por favor escoja una opción",JOptionPane.QUESTION_MESSAGE, null, ops2, ops2[0]));
+            continua = (ans2.equals("Cerrar programa"))?false:true;
         } while (continua);
     }
 }

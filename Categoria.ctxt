@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Categoria
+comment1.params=categ_name\ id
+comment1.target=Categoria(java.lang.String,\ ID)
+comment2.params=categ\ id_num
+comment2.target=void\ add(java.lang.String,\ ID)
+comment3.params=n
+comment3.target=boolean\ existe(java.lang.String)
+comment4.params=n
+comment4.target=java.util.ArrayList\ buscarCategoria(java.lang.String)
+numComments=5

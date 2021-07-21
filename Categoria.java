@@ -28,6 +28,7 @@ public class Categoria
             next.add(categ,id_num); //cualquier otro caso
         }
     }
+    
      public boolean existe(String n){
         boolean flag=false;
         if(categ_name==n){
@@ -37,6 +38,7 @@ public class Categoria
         }
         return flag;
     }
+    
     public ArrayList<ID> buscarCategoria(String n){
         if(existe(n)){
             if(categ_name==n){

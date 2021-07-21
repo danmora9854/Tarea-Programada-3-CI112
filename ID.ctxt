@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=ID
+comment1.params=value\ tipo\ director\ fecha\ a\u00F1o\ audiencia\ duracion\ descripcion
+comment1.target=ID(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=newID
+comment2.target=void\ add(ID)
+numComments=3

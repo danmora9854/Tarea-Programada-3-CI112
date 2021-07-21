@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Pais
+comment1.params=pais_name\ id
+comment1.target=Pais(java.lang.String,\ ID)
+comment2.params=pais\ id_num
+comment2.target=void\ add(java.lang.String,\ ID)
+comment3.params=n
+comment3.target=boolean\ existe(java.lang.String)
+comment4.params=n
+comment4.target=java.util.ArrayList\ buscarPais(java.lang.String)
+numComments=5
