@@ -5,14 +5,18 @@
 import java.util.ArrayList;
 public class ID
 {
-    String value;
-    Titulo title;
-    ArrayList <Categoria> categ;
-    Pais country;
-    ArrayList <Cast> cast;
-    String tipo, director, fecha, año, audiencia, duracion, descripcion;
-    ID next;
-    
+    String value; // Codigo por pelicula
+    Titulo title; // Titulo por pelicula
+    ArrayList <Categoria> categ; //Arreglo de categorias a las que pertenece 
+    Pais country; //Pais de procedencia de la pelicula
+    ArrayList <Cast> cast; //Arreglo de objetos tipo Cast asociados a una pelicula
+    String tipo, director, fecha, año, audiencia, duracion, descripcion; //Strings del tipo, directos, fecha, anio, audiencia, duracion y descripcion asociados a una pelicula
+    ID next; //Siguiente objeto de la lista ID
+     
+    /**
+     * Constructor del objeto tipo ID. Recibe todos los Strings y le asigna sus valores a cada respectivo atributo.
+     * 
+     */
     public ID (String value, String tipo, String director, String fecha, String año, String audiencia, String duracion, String descripcion)
     {
         this.value = value;
@@ -28,7 +32,10 @@ public class ID
         title = null;
         country = null;
     }
-    
+     /**
+     * add: Método que añade un ID a la lista
+     * @param newID: Recibe un objeto tipo ID que es el nuevo nodo de la lista de IDs
+     */
     public void add (ID newID)
     {
         if (next == null){
