@@ -4,9 +4,9 @@
 import java.util.ArrayList;
 public class Categoria
 {
-    String categ_name;
-    ArrayList <ID> ids;
-    Categoria next;
+    String categ_name; // Nombre de la categoria
+    ArrayList <ID> ids; //Arreglo de objetos tipo ID asociados a cada categoria
+    Categoria next; //Siguiente objeto tipo Categoria de la lista simple
     /**
      * Constructor del objeto categoria, le asigna a la categoria un nombre y un id.
      */
