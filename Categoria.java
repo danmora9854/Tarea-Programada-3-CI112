@@ -42,7 +42,7 @@ public class Categoria
             if(categ_name==n){
                 return ids;
            }else{
-                return next.buscarPais(n);
+                return next.buscarCategoria(n);
             }
         }else{
             String d="¡Esa categoría no existe en la lista!";

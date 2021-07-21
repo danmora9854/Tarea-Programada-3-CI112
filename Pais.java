@@ -28,7 +28,7 @@ public class Pais
             next.add(pais,id_num); //cualquier otro caso
         }
     }
-}
+
     public boolean existe(String n){
         boolean flag=false;
         if(pais_name==n){
@@ -43,7 +43,7 @@ public class Pais
             if(pais_name==n){
                 return ids;
            }else{
-                if(next!=null){return next.buscarPais(n);}
+                return next.buscarPais(n);
             }
         }else{
             String d="¡Ese país no existe en la lista!";

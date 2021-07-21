@@ -150,10 +150,9 @@ public class Controlador
     public ArrayList <ID> busqueCategoria (String categoria)
     {
         ArrayList <ID> ids = null;
-        Categoria categ = categ_list.busque(categoria);
-        if (categ != null)
+        if (categ_list.existe(categoria))
         {
-            ids = categ.ids;
+            ids = categ_list.buscarCategoria(categoria);
         }
         return ids;
     }
@@ -161,11 +160,11 @@ public class Controlador
     public ArrayList <ID> busquePais (String pais)
     {
         ArrayList <ID> ids = null;
-        Pais country = country_list.busque(pais);
-        if (country!= null)
+        if(country_list.existe(pais))
         {
-            ids = country.ids;
+            ids = country_list.buscarPais(pais);
         }
+        
         return ids;
     }
     
