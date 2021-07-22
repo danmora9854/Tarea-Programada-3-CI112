@@ -103,14 +103,14 @@ public class Controlador
      * leaData: Método que lee la data de todas las películas.
      * 
      */
-    public void leaData ()
+    public void leaData (String file_name)
     {
         String hilera;
         String d[];
         boolean flag = true;
 
         try{
-            Scanner sc = new Scanner (new FileReader("netflix_titles.txt"));
+            Scanner sc = new Scanner (new FileReader(file_name));
             while((sc.hasNextLine())){
                 hilera = sc.nextLine();
                 d = hilera.split(";");
@@ -255,7 +255,10 @@ public class Controlador
     public static void main (String arg[])
     {
         Controlador c = new Controlador ();
-        c.leaData();
+        String[] fileChoice = {"Cargar la data total","Cargar las primeras 25 entradas"};
+        String ansFile = (String)(JOptionPane.showInputDialog(null,"Cómo desea cargar la data?","Por favor escoja una opción",JOptionPane.QUESTION_MESSAGE, null,fileChoice,fileChoice[0]));
+        String file_name = (ansFile.equals("Cargar la data total"))?"netflix_titles.txt":"netflix_titles(cortada)";
+        c.leaData(file_name);
         boolean continua = true;
         Scanner scan = new Scanner("");
         ArrayList<ID> busqueda = new ArrayList<ID>();
