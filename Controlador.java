@@ -38,15 +38,17 @@ public class Controlador
      */
     public void ingreseData (String [] fila, boolean flag)
     {
-        char c1 = 34;
-        char c2 = 0;
-        String [] data = fila.clone();
+        char c1 = '"';
+        char c2 = ' ';
+        char c3 = '​';
+        String [] data = new String [fila.length];
         String [] actores;
         String [] categs;
         for (int i = 0; i < 12; i++)
         {
-            data[i] = data[i].replace(c1,c2).trim();
+            data[i] = fila[i].replace(c1,c2).replace(c3,c2).trim();
         }
+        System.out.println(data[2]);
         actores = data[4].split(",");
         for (int j = 0; j < actores.length; j++)
         {
@@ -76,15 +78,11 @@ public class Controlador
             {
                 cast_tree.add(actores[n],id_list);
             }
-            
             for (int p = 1; p < categs.length; p++)
             {
                 categ_list.add(categs[p],id_list);
             }
-            
         } else {
-            //Hace algo similar al if anterior solo que los objetos ya
-            //han sido creados entonces solo usa metodos add
             ID new_id = new ID (data[0],data[1],data[3],data[6],data[7],data[8],data[9],data[11]);
             id_list.add(new_id);
             country_list.add(data[5],new_id);
@@ -93,7 +91,6 @@ public class Controlador
             for (int n = 0; n < actores.length; n++){
                 cast_tree.add(actores[n],new_id);
             }
-            
             for (int p = 0; p < categs.length; p++)
             {
                 categ_list.add(categs[p],new_id);
@@ -136,14 +133,11 @@ public class Controlador
         for(int i = 0; i < id.cast.size();i++) {
             System.out.print(id.cast.get(i).actor + ",");
         }
-        
         System.out.print(" // " + id.country.pais_name +" // " + id.fecha + " // " + id.año + " // " + id.audiencia + " // " + id.duracion + " // ");
-        
         for(int i = 0; i < id.categ.size();i++) {
             System.out.print(id.categ.get(i).categ_name + ",");
         }
-        
-        System.out.print(" // "+ id.descripcion);
+        System.out.println(" // "+ id.descripcion);
     }
 
     /**
@@ -192,6 +186,10 @@ public class Controlador
         if (categ_list.existe(categoria))
         {
             ids = categ_list.buscarCategoria(categoria);
+        }else{
+            String d="¡Esa categoría no existe en la lista!";
+            System.out.print(d);
+            return null;
         }
         return ids;
     }
@@ -208,8 +206,11 @@ public class Controlador
         if(country_list.existe(pais))
         {
             ids = country_list.buscarPais(pais);
+        }else{
+            String d="¡Ese país no existe en la lista!";
+            System.out.print(d);
+            return null;
         }
-
         return ids;
     }
 
@@ -256,56 +257,46 @@ public class Controlador
             switch (ans1)
             {
                 case "Buscar por titulo":
-
-                System.out.println("Ingrese el título de la película que desea buscar");
-                scan = new Scanner(System.in);
-                String tituloDeBusqueda = scan.nextLine();
-                ID peliBuscada = c.busqueTitulo(tituloDeBusqueda);
-
-                c.muestrePelicula(peliBuscada);
-
-                break;
+                    System.out.println("Ingrese el título de la película que desea buscar");
+                    scan = new Scanner(System.in);
+                    String tituloDeBusqueda = scan.nextLine();
+                    ID peliBuscada = c.busqueTitulo(tituloDeBusqueda);
+                    c.muestrePelicula(peliBuscada);
+                    break;
 
                 case "Buscar por actor":
-
-                System.out.println("Ingrese el nombre del actor que desea buscar");
-                scan = new Scanner(System.in);
-                String nombreDeActor = scan.nextLine();
-                busqueda = c.busqueCast(nombreDeActor);
-
-                for(int i = 0; i < busqueda.size();i++){
-                    c.muestrePelicula(busqueda.get(i));
-                }
-
-                break;
+                    System.out.println("Ingrese el nombre del actor que desea buscar");
+                    scan = new Scanner(System.in);
+                    String nombreDeActor = scan.nextLine();
+                    busqueda = c.busqueCast(nombreDeActor);
+                    for(int i = 0; i < busqueda.size();i++){
+                        c.muestrePelicula(busqueda.get(i));
+                    }
+                    break;
 
                 case "Buscar por categoria":
-                System.out.println("Ingrese el nombre de la categoría que desea buscar");
-                scan = new Scanner(System.in);
-                String nombreDeCateg = scan.nextLine();
-                busqueda = c.busqueCategoria(nombreDeCateg);
-
-                for(int i = 0; i < busqueda.size();i++){
-                    c.muestrePelicula(busqueda.get(i));
-                }
-
-                break;
+                    System.out.println("Ingrese el nombre de la categoría que desea buscar");
+                    scan = new Scanner(System.in);
+                    String nombreDeCateg = scan.nextLine();
+                    busqueda = c.busqueCategoria(nombreDeCateg);
+                    for(int i = 0; i < busqueda.size();i++){
+                        c.muestrePelicula(busqueda.get(i));
+                    }
+                    break;
 
                 case "Buscar por pais":
-                System.out.println("Ingrese el nombre del país que desea buscar");
-                scan = new Scanner(System.in);
-                String nombreDePais = scan.nextLine();
-                busqueda = c.busquePais(nombreDePais);
-
-                for(int i = 0; i < busqueda.size();i++){
-                    c.muestrePelicula(busqueda.get(i));
-                }
-
-                break;
+                    System.out.println("Ingrese el nombre del país que desea buscar");
+                    scan = new Scanner(System.in);
+                    String nombreDePais = scan.nextLine();
+                    busqueda = c.busquePais(nombreDePais);
+                    for(int i = 0; i < busqueda.size();i++){
+                        c.muestrePelicula(busqueda.get(i));
+                    }
+                    break;
 
                 case "Crear nueva categoria":
-                c.crearCategoria();
-                break;
+                    c.crearCategoria();
+                    break;
             }
             //Elige si continuar utilizando el programa o no
             String[] ops2 = {"Realizar nueva acción","Cerrar programa"};
