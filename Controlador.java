@@ -48,7 +48,6 @@ public class Controlador
         {
             data[i] = fila[i].replace(c1,c2).replace(c3,c2).trim();
         }
-        System.out.println(data[2]);
         actores = data[4].split(",");
         for (int j = 0; j < actores.length; j++)
         {
