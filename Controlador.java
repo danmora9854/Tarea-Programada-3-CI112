@@ -153,6 +153,8 @@ public class Controlador
         if (tit != null)
         {
             id = tit.show_id;
+        }else{
+            System.out.println("No se ha encontrado la pelicula/serie solicitada");
         }
         return id;
     }
@@ -170,6 +172,8 @@ public class Controlador
         if (cast != null)
         {
             ids = cast.ids;
+        }else{
+            System.out.println("No se ha encontrado  al actor solicitado");
         }
         return ids;
     }
@@ -232,7 +236,12 @@ public class Controlador
             }
             iterador = iterador.next;
         } while(iterador != null);
-
+        
+        if(listaDeID.size() == 0)
+        {
+            System.out.println("No se han encontrado películas/series con esa categoría");
+        }
+        
         if(listaDeID.size() != 0){
 
             for(int i = 0; i < listaDeID.size();i++){
@@ -252,7 +261,7 @@ public class Controlador
         ArrayList<ID> busqueda = new ArrayList<ID>();
         do {
             //Elige qué acción realizar con el programa
-            String[] ops1 = {"Buscar por titulo","Buscar por actor","Buscar por categoria","Buscar por pais","Crear nueva categoria"};
+            String[] ops1 = {"Buscar por titulo","Buscar por actor","Buscar por categoria","Buscar por pais","Crear nueva categoria","Salir del programa"};
             String ans1 = (String)(JOptionPane.showInputDialog(null,"¿Qué desea hacer?","Por favor escoja una opción",JOptionPane.QUESTION_MESSAGE, null, ops1, ops1[0]));
             switch (ans1)
             {
