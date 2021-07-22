@@ -1,7 +1,7 @@
 /**
  * Clase controlador de la Tarea Programada 3.
  *
- * @author (Diego Hernández Agüero B83716)
+ * @author (Diego Hernández Agüero B83716// Juan José Bermúdez B7// Daniel Mora Mora B64720)
  * @version (v.1)
  */
 import java.awt.*;
