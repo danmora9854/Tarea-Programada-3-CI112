@@ -20,14 +20,7 @@ public class Cast
         actor_izq = null;
         actor_der = null;
     }
-      /**
-     * muestreActor: Devuelve un String con las peliculas en las que participo el actor asociado al nodo.
-     */
-    public String muestreActor(){
 
-        return actor + "Participó en las siguientes películas:\n" + ids;
-
-    }
       /**
      * busque: Devuelve un objeto tipo Cast al buscar un actor por su nombre.
      * @param act: Recibe un string que es el nombre del actor por buscar.
