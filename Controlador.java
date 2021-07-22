@@ -254,7 +254,7 @@ public class Controlador
     public static void main (String arg[])
     {
         Controlador c = new Controlador ();
-        String[] fileChoice = {"Cargar la data total","Cargar las primeras 25 entradas"};
+        String[] fileChoice = {"Cargar la data total","Cargar las primeras 100 entradas"};
         String ansFile = (String)(JOptionPane.showInputDialog(null,"Cómo desea cargar la data?","Por favor escoja una opción",JOptionPane.QUESTION_MESSAGE, null,fileChoice,fileChoice[0]));
         String file_name = (ansFile.equals("Cargar la data total"))?"netflix_titles.txt":"netflix_titles(cortada)";
         c.leaData(file_name);
