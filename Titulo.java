@@ -50,15 +50,17 @@ public class Titulo
      */
     public Titulo busque(String titulo){
         Titulo r = null;  
-        if (titulo.compareTo(title_name) == 0) 
+        if (titulo.compareTo(title_name) == 0) {
             r=this;
-        else{
+        }else{
             if (titulo.compareTo(title_name) < 0){ 
-                if (title_der!=null)
-                    return title_der.busque(titulo);
+                if (title_der != null){
+                    r = title_der.busque(titulo);
+                }
             }else{
-                if (title_izq!=null)
-                    return title_izq.busque(titulo);
+                if (title_izq != null) {
+                    r = title_izq.busque(titulo);
+                }
             }
         }
         return r;
