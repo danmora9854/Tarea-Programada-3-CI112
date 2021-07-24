@@ -44,7 +44,7 @@ public class Pais
      */
     public boolean existe(String n){
         boolean flag=false;
-        if(pais_name==n){
+        if(pais_name.equals(n)){
             flag=true;
         }else{
             if(next!=null){flag=next.existe(n);}
@@ -58,7 +58,7 @@ public class Pais
      */
     public ArrayList<ID> buscarPais(String n){
         if(existe(n)){
-            if(pais_name==n){
+            if(pais_name.equals(n)){
                 return ids;
            }else{
                 return next.buscarPais(n);
