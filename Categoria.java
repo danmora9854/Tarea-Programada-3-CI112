@@ -7,6 +7,7 @@ public class Categoria
     String categ_name; // Nombre de la categoria
     ArrayList <ID> ids; //Arreglo de objetos tipo ID asociados a cada categoria
     Categoria next; //Siguiente objeto tipo Categoria de la lista simple
+    
     /**
      * Constructor del objeto categoria, le asigna a la categoria un nombre y un id.
      */
@@ -24,17 +25,17 @@ public class Categoria
      * @param categ: Recibe un string que es el nombre de la nueva categoría. 
      * @param id_num: Recibe un objeto tipo ID para asignarle a la categoría.
      */
-    
     public void add (String categ, ID id_num) {
         if (categ.equals(categ_name)) {
             ids.add(id_num);
             id_num.categ.add(this);
-        }
-        if (next==null) {
-            next = new Categoria(categ,id_num);
-            id_num.categ.add(next);
-        }else{
-            next.add(categ,id_num); //cualquier otro caso
+        } else {
+            if (next==null) {
+                next = new Categoria(categ,id_num);
+                id_num.categ.add(next);
+            }else{
+                next.add(categ,id_num); //cualquier otro caso
+            }
         }
     }
     
@@ -46,7 +47,7 @@ public class Categoria
      */
      public boolean existe(String n){
         boolean flag=false;
-        if(categ_name==n){
+        if(categ_name.equals(n)){
             flag=true;
         }else{
             if(next!=null){flag=next.existe(n);}
@@ -60,16 +61,10 @@ public class Categoria
      * @param n: Recibe un string que es la cateogíra por buscar.
      */
     public ArrayList<ID> buscarCategoria(String n){
-        if(existe(n)){
-            if(categ_name==n){
-                return ids;
-           }else{
-                return next.buscarCategoria(n);
-            }
+        if(categ_name.equals(n)){
+            return ids;
         }else{
-            String d="¡Esa categoría no existe en la lista!";
-            System.out.print(d);
-            return null;
+            return next.buscarCategoria(n);
         }
     }
 }
