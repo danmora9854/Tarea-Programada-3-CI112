@@ -1,7 +1,7 @@
 /**
  * Clase controlador de la Tarea Programada 3.
  *
- * @author (Diego Hernández Agüero B83716// Juan José Bermúdez B71082// Daniel Mora Mora B64720)
+ * @author (Diego Hernández Agüero B83716)
  * @version (v.1)
  */
 import java.awt.*;
@@ -272,7 +272,9 @@ public class Controlador
                     scan = new Scanner(System.in);
                     String tituloDeBusqueda = scan.nextLine();
                     ID peliBuscada = c.busqueTitulo(tituloDeBusqueda);
-                    c.muestrePelicula(peliBuscada);
+                    if (peliBuscada != null){
+                        c.muestrePelicula(peliBuscada);
+                    }
                     break;
 
                 case "Buscar por actor":
@@ -280,8 +282,10 @@ public class Controlador
                     scan = new Scanner(System.in);
                     String nombreDeActor = scan.nextLine();
                     busqueda = c.busqueCast(nombreDeActor);
-                    for(int i = 0; i < busqueda.size();i++){
-                        c.muestrePelicula(busqueda.get(i));
+                    if (busqueda != null){
+                        for(int i = 0; i < busqueda.size();i++){
+                            c.muestrePelicula(busqueda.get(i));
+                        }
                     }
                     break;
 
@@ -290,8 +294,10 @@ public class Controlador
                     scan = new Scanner(System.in);
                     String nombreDeCateg = scan.nextLine();
                     busqueda = c.busqueCategoria(nombreDeCateg);
-                    for(int i = 0; i < busqueda.size();i++){
-                        c.muestrePelicula(busqueda.get(i));
+                    if (busqueda != null){
+                        for(int i = 0; i < busqueda.size();i++){
+                            c.muestrePelicula(busqueda.get(i));
+                        }
                     }
                     break;
 
@@ -300,8 +306,10 @@ public class Controlador
                     scan = new Scanner(System.in);
                     String nombreDePais = scan.nextLine();
                     busqueda = c.busquePais(nombreDePais);
-                    for(int i = 0; i < busqueda.size();i++){
-                        c.muestrePelicula(busqueda.get(i));
+                    if (busqueda != null){
+                        for(int i = 0; i < busqueda.size();i++){
+                            c.muestrePelicula(busqueda.get(i));
+                        }
                     }
                     break;
 
